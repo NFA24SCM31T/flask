@@ -56,8 +56,7 @@ def github():
     # Extract the choosen repositories from the request
     repo_name = body['repository']
     # Add your own GitHub Token to run it local
-    token = os.environ.get(
-        'GITHUB_TOKEN', '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')
+    token = "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"
     GITHUB_URL = f"https://api.github.com/"
     headers = {
         "Authorization": f'token {token}'
@@ -74,8 +73,8 @@ def github():
     today = date.today()
 
     issues_reponse = []
-    # Iterating to get issues for every month for the past 2 months
-    for i in range(2):
+    # Iterating to get issues for every month for the past 12 months
+    for i in range(12):
         last_month = today + dateutil.relativedelta.relativedelta(months=-1)
         types = 'type:issue'
         repo = 'repo:' + repo_name
@@ -189,7 +188,7 @@ def github():
     }
 
     # Update your Google cloud deployed LSTM app URL (NOTE: DO NOT REMOVE "/")
-    LSTM_API_URL = "https://lstm-704503300813.us-central1.run.app/" + "api/forecast"
+    LSTM_API_URL = "your_lstm_gcloud_url/" + "api/forecast"
 
     '''
     Trigger the LSTM microservice to forecasted the created issues
